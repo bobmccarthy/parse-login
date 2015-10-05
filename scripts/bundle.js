@@ -32532,10 +32532,8 @@ module.exports = require('./lib/React');
 'use strict';
 
 var React = require('react');
-var NavComponent = require('./NavComponent');
 var nav = document.getElementById('nav');
-
-React.render(React.createElement(NavComponent, { user: null }), nav);
+var NavComponent = require('./NavComponent');
 
 module.exports = React.createClass({
 	displayName: 'exports',
@@ -32546,21 +32544,25 @@ module.exports = React.createClass({
 			'div',
 			null,
 			React.createElement(
-				'button',
-				{ className: 'logout', onClick: this.logout },
-				'LogOut'
+				'a',
+				{ href: '#', className: 'waves-effect waves-light btn logOut', onClick: this.logOut },
+				'Log Out'
 			),
 			React.createElement(
-				'div',
+				'h2',
 				null,
 				'You Made it to Dashboard'
+			),
+			React.createElement(
+				'p',
+				null,
+				'Aliquam a risus lorem. In hac habitasse platea dictumst. Vivamus sed efficitur enim. Vivamus nibh sem, tempus at augue vel, pharetra consequat mauris. Pellentesque vitae enim a erat cursus luctus. Vivamus lacinia iaculis mauris id sodales. Sed ac ipsum mattis sem consectetur ultricies. Nullam sed iaculis nulla. Aenean varius ex tortor, ut Morbi accumsan ac sem condimentum posuere. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed efficitur interdum ex, ac rhoncus tortor imperdiet a. Pellentesque ornare leo sit amet est pharetra gravida. Duis commodo nulla non odio euismod, at laoreet libero posuere. Vestibulum nunc est, porta quis neque non, scelerisque scelerisque purus. Morbi tincidunt ut tortor ut tempor. Nulla viverra efficitur metus sit amet aliquam. Phasellus tempus pharetra nunc, vel bibendum nunc finibus ac. Fusce arcu tellus, aliquam id justo et, pellentesque fermentum purus. Morbi iaculis, metus sed semper sagittis, diam elit dapibus risus, quis pharetra velit turpis non nisi. Suspendisse laoreet blandit tincidunt. Curabitur ultricies luctus risus eget molestie. Vestibulum euismod in magna eu bibendum. Morbi erat ligula, tristique sed magna at, consectetur blandit lorem. Maecenas dictum et enim sed tincidunt.'
 			)
 		);
 	},
-	logout: function logout() {
-		console.log('log out');
+	logOut: function logOut() {
 		Parse.User.logOut();
-		React.render(React.createElement(NavComponent, { user: null }), nav);
+		React.render(React.createElement(NavComponent, { user: true, router: this.props.router }), nav);
 		this.props.router.navigate('', { trigger: true });
 	}
 
@@ -32590,6 +32592,7 @@ module.exports = React.createClass({
 
 var React = require('react');
 var NavComponent = require('./NavComponent');
+var nav = document.getElementById('nav');
 
 module.exports = React.createClass({
 	displayName: 'exports',
@@ -32658,7 +32661,7 @@ module.exports = React.createClass({
 				_this.setState({
 					error: null
 				});
-				React.render(React.createElement(NavComponent, { user: user }), nav);
+				React.render(React.createElement(NavComponent, { user: null, router: _this.props.router }), nav);
 				_this.props.router.navigate('dashboard', { trigger: true });
 			},
 			error: function error(user, err) {
@@ -32673,49 +32676,50 @@ module.exports = React.createClass({
 });
 
 },{"./NavComponent":163,"react":159}],163:[function(require,module,exports){
-"use strict";
+'use strict';
 
 var React = require('react');
 
 module.exports = React.createClass({
-	displayName: "exports",
+	displayName: 'exports',
 
 	render: function render() {
-		if (this.props.user) {
+		console.log('rendered');
+		if (this.props.user === null) {
 			return React.createElement(
-				"nav",
+				'nav',
 				null,
 				React.createElement(
-					"div",
-					{ className: "nav-wrapper" },
+					'div',
+					{ className: 'nav-wrapper' },
 					React.createElement(
-						"a",
-						{ href: "#", className: "logo" },
+						'a',
+						{ href: '#', className: 'logo' },
 						React.createElement(
-							"span",
+							'span',
 							null,
-							"LogoHere"
+							'LogoHere'
 						)
 					),
 					React.createElement(
-						"ul",
-						{ id: "nav-mobile", className: "right" },
+						'ul',
+						{ id: 'nav-mobile', className: 'right' },
 						React.createElement(
-							"li",
+							'li',
 							null,
 							React.createElement(
-								"a",
-								{ href: "#" },
-								"Home"
+								'a',
+								{ href: '#' },
+								'Home'
 							)
 						),
 						React.createElement(
-							"li",
+							'li',
 							null,
 							React.createElement(
-								"a",
-								{ href: "#dashboard" },
-								"DASHBOARD"
+								'a',
+								{ href: '#dashboard' },
+								'DASHBOARD'
 							)
 						)
 					)
@@ -32723,48 +32727,48 @@ module.exports = React.createClass({
 			);
 		} else {
 			return React.createElement(
-				"nav",
+				'nav',
 				null,
 				React.createElement(
-					"div",
-					{ className: "nav-wrapper" },
+					'div',
+					{ className: 'nav-wrapper' },
 					React.createElement(
-						"a",
-						{ href: "#", className: "logo" },
+						'a',
+						{ href: '#', className: 'logo' },
 						React.createElement(
-							"span",
+							'span',
 							null,
-							"LogoHere"
+							'LogoHere'
 						)
 					),
 					React.createElement(
-						"ul",
-						{ id: "nav-mobile", className: "right" },
+						'ul',
+						{ id: 'nav-mobile', className: 'right' },
 						React.createElement(
-							"li",
+							'li',
 							null,
 							React.createElement(
-								"a",
-								{ href: "#" },
-								"Home"
+								'a',
+								{ href: '#' },
+								'Home'
 							)
 						),
 						React.createElement(
-							"li",
+							'li',
 							null,
 							React.createElement(
-								"a",
-								{ href: "#login" },
-								"Log In"
+								'a',
+								{ href: '#login' },
+								'Log In'
 							)
 						),
 						React.createElement(
-							"li",
+							'li',
 							null,
 							React.createElement(
-								"a",
-								{ href: "#register" },
-								"Register"
+								'a',
+								{ href: '#register' },
+								'Register'
 							)
 						)
 					)
@@ -32775,12 +32779,14 @@ module.exports = React.createClass({
 });
 
 },{"react":159}],164:[function(require,module,exports){
-"use strict";
+'use strict';
 
 var React = require('react');
+var NavComponent = require('./NavComponent');
+var nav = document.getElementById('nav');
 
 module.exports = React.createClass({
-	displayName: "exports",
+	displayName: 'exports',
 
 	getInitialState: function getInitialState() {
 		return {
@@ -32790,47 +32796,47 @@ module.exports = React.createClass({
 	render: function render() {
 
 		return React.createElement(
-			"div",
-			{ className: "row" },
+			'div',
+			{ className: 'row' },
 			React.createElement(
-				"form",
-				{ className: "col s12", onSubmit: this.onRegister },
+				'form',
+				{ className: 'col s12', onSubmit: this.onRegister },
 				React.createElement(
-					"h2",
+					'h2',
 					null,
-					"Register for a new profile here..."
+					'Register for a new profile here...'
 				),
 				React.createElement(
-					"p",
+					'p',
 					null,
 					this.state.error
 				),
 				React.createElement(
-					"div",
-					{ className: "row" },
+					'div',
+					{ className: 'row' },
 					React.createElement(
-						"div",
-						{ className: "input-field col s6" },
-						React.createElement("input", { placeholder: "Email", ref: "email", type: "text", className: "validate" })
+						'div',
+						{ className: 'input-field col s6' },
+						React.createElement('input', { placeholder: 'Email', ref: 'email', type: 'text', className: 'validate' })
 					)
 				),
 				React.createElement(
-					"div",
-					{ className: "row" },
+					'div',
+					{ className: 'row' },
 					React.createElement(
-						"div",
-						{ className: "input-field col s6" },
-						React.createElement("input", { placeholder: "password", ref: "password", type: "password", className: "validate" })
+						'div',
+						{ className: 'input-field col s6' },
+						React.createElement('input', { placeholder: 'password', ref: 'password', type: 'password', className: 'validate' })
 					)
 				),
 				React.createElement(
-					"button",
-					{ className: "btn waves-effect waves-light", type: "submit", name: "action" },
-					"Submit",
+					'button',
+					{ className: 'btn waves-effect waves-light', type: 'submit', name: 'action' },
+					'Submit',
 					React.createElement(
-						"i",
-						{ className: "material-icons right" },
-						"send"
+						'i',
+						{ className: 'material-icons right' },
+						'send'
 					)
 				)
 			)
@@ -32854,7 +32860,8 @@ module.exports = React.createClass({
 				_this.setState({
 					error: null
 				});
-				_this.props.router.navigate('', { trigger: true });
+				React.render(React.createElement(NavComponent, { user: null, router: _this.props.router }), nav);
+				_this.props.router.navigate('dashboard', { trigger: true });
 			},
 			error: function error(user, err) {
 				console.log('error', user, err);
@@ -32867,7 +32874,7 @@ module.exports = React.createClass({
 
 });
 
-},{"react":159}],165:[function(require,module,exports){
+},{"./NavComponent":163,"react":159}],165:[function(require,module,exports){
 'use strict';
 var React = require('react');
 var Backbone = require('backbone');
@@ -32883,9 +32890,7 @@ var LoginComponent = require('./components/LoginComponent');
 var DashboardComponent = require('./components/DashboardComponent');
 var nav = document.getElementById('nav');
 var main = document.getElementById('main');
-
 var currentUser = Parse.User.current();
-React.render(React.createElement(NavComponent, { user: currentUser }), nav);
 
 var Router = Backbone.Router.extend({
 	routes: {
@@ -32896,7 +32901,6 @@ var Router = Backbone.Router.extend({
 
 	},
 	home: function home() {
-
 		React.render(React.createElement(HomeComponent, null), main);
 	},
 	login: function login() {
@@ -32906,12 +32910,17 @@ var Router = Backbone.Router.extend({
 		React.render(React.createElement(RegisterComponent, { router: r }), main);
 	},
 	dashboard: function dashboard() {
-		console.log(currentUser);
 		React.render(React.createElement(DashboardComponent, { router: r }), main);
 	}
 });
 var r = new Router();
 Backbone.history.start();
+
+if (currentUser) {
+	React.render(React.createElement(NavComponent, { user: null, router: r }), nav);
+} else {
+	React.render(React.createElement(NavComponent, { user: true, router: r }), nav);
+}
 
 },{"./components/DashboardComponent":160,"./components/HomeComponent":161,"./components/LoginComponent":162,"./components/NavComponent":163,"./components/RegisterComponent":164,"backbone":1,"jquery":4,"react":159}]},{},[165])
 

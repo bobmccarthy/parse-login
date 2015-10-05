@@ -1,5 +1,6 @@
 var React = require('react');
 var NavComponent = require('./NavComponent');
+var nav = document.getElementById('nav');
 
 module.exports = React.createClass({
 	getInitialState: function() {
@@ -40,7 +41,7 @@ module.exports = React.createClass({
 				this.setState({
 					error: null
 				});
-				React.render(<NavComponent user={user} />,nav);
+				React.render(<NavComponent user={null} router={this.props.router} />,nav);
 				this.props.router.navigate('dashboard',{trigger: true});
 			},
 			error: (user, err) => {

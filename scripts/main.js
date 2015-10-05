@@ -15,11 +15,7 @@ var LoginComponent = require('./components/LoginComponent');
 var DashboardComponent = require('./components/DashboardComponent');
 var nav = document.getElementById('nav');
 var main = document.getElementById('main');
-
-
-
 var currentUser = Parse.User.current();
-React.render(<NavComponent user={currentUser} />,nav);
 
 
 
@@ -32,7 +28,6 @@ var Router = Backbone.Router.extend({
 		
 	},
 	home: function(){
-		
 		React.render(<HomeComponent />,main);
 	},
 	login: function() {
@@ -42,9 +37,16 @@ var Router = Backbone.Router.extend({
 		React.render(<RegisterComponent router={r} />,main);
 	},
 	dashboard: function(){
-		console.log(currentUser);
 		React.render(<DashboardComponent router={r} />, main);
 	}
 });
 var r = new Router();
 Backbone.history.start();
+
+if (currentUser){
+	React.render(<NavComponent user={null} router={r}/>,nav);
+}else{
+	React.render(<NavComponent user={true} router={r}/>,nav);
+}
+
+

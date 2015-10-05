@@ -3,7 +3,8 @@ var React = require('react');
 
 module.exports = React.createClass({
 	render: function(){
-		if (this.props.user) {
+		console.log('rendered');
+		if (this.props.user===null) {
 			return(
 				<nav>
 				    <div className="nav-wrapper">
@@ -11,6 +12,7 @@ module.exports = React.createClass({
 				    	<ul id="nav-mobile" className="right">
 							<li><a href="#">Home</a></li>
 				        	<li><a href="#dashboard">DASHBOARD</a></li>
+				        	
 				      	</ul>
 				    </div>
 				</nav>
